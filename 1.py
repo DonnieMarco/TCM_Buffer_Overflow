@@ -2,6 +2,9 @@
 import sys, socket
 from time import sleep
 
+# This script will create a socket and send the buffer of As to that socket until it crashes (you have to ctrl + c) to see the answer.
+# The vulnerable app is running and attached to immunity debugger
+
 buffer = "A" * 100
 
 while True:
