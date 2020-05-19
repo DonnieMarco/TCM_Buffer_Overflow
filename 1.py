@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import sys.socket
+import sys, socket
 from time import sleep
 
 buffer = "A" * 100
