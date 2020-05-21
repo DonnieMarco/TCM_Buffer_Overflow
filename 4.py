@@ -3,6 +3,8 @@ import sys, socket
 
 # Mostly the same as 3.py
 # Finding bad characters
+# This will require so much practice to get right but basically you look at the hex and looking for characters missing from the pattern such as 1235 - 4 would be a bad character.
+# In the example given B0 seemed to represent many of the bad characters.
 
 
 badchars = ("\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f"
